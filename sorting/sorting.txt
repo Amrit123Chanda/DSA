@@ -22,3 +22,26 @@ for (int i = 0; i < n - 1; i++) {
         }
 
 Selection sort TC- O(n*n)
+
+Bubble Sort- (total numbers-1,2,3,4...n)swapping in pair like- (0,1),(1,2),(2,3)...(n-1,n).So greatest number will now be in last place. then again swapping in pair like-(0,1),(1,2),(2,3)...(n,2,n-1).So now second great number will be in second last place,And so on.
+static void bubbleSort(int arr[], int n){
+        int i, j, temp;
+        boolean swapped;
+        for (i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    
+                    // Swap arr[j] and arr[j+1]
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // If no two elements were
+            // swapped by inner loop, then break
+            if (swapped == false)
+                break;
+        }
