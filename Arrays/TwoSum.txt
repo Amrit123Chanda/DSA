@@ -59,3 +59,32 @@ class Solution {
 
 logic-we put all elements and its index in hashmap. And we check if target-element of array exists in hashmap.
 hm.get(reqNum)!=i is to make sure when x+x=y, both x are from different indexes.
+
+Solution2 : if only asked to return YES or NO
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int p1=0;
+        int p2=nums.length-1;
+        int sum=0;
+        Arrays.sort(nums);
+        int[] ans = new int[2];
+        while(p1<p2)
+        {
+            sum=nums[p1]+nums[p2];//2,3,4
+            if(sum==target)
+             {
+                ans[0]=p1;
+                ans[1]=p2;
+                return "YES";
+             }
+             else if(sum>target)
+             {
+                p2--;
+             } 
+             else
+              p1++;
+        }       
+
+        return "NO";
+    }
+}
