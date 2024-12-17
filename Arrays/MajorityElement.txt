@@ -1,0 +1,47 @@
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,3]
+Output: 3
+Example 2:
+
+Input: nums = [2,2,1,1,1,2,2]
+Output: 2
+ 
+
+solution - 
+class Solution {
+    public int majorityElement(int[] nums) {
+        int len=nums.length;
+        int el=0,cnt=0;
+
+        for(int i=0;i<len;i++)
+        {    
+            if(cnt==0)
+            {
+                el=nums[i];
+                cnt++;
+            }
+            else if (el==nums[i])
+            {
+                cnt++;
+            }
+           
+            else
+            {
+                cnt--;
+            }
+        }
+
+        return el;
+    }
+}
+
+
+logic- Moore’s Voting Algorithm:
+We traverse the array,we pick the first & increase the count by 1.if the next element is same as the current holding element(el) then cnt++ else cnt--. if count(cnt) becomes 0, it means all they cancelled out each other till that point(i.e el and others have cancelled out each other in terms of cnt]). so if cnt=0, we again pick the new element and proceed the same way. Atlast the el will be returned obviously.
