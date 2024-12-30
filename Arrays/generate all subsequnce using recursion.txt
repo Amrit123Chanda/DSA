@@ -1,0 +1,30 @@
+To generate all subsequnce using recursion
+
+(using pick and not pick method)
+import java.util.ArrayList;
+
+public class SubsequenceGenerator {
+
+    // Function to generate all subsequences
+    public static void generateSubsequences(int[] arr, int index, ArrayList<Integer> currentSubsequence) {
+        // Base case: When we have considered all elements, print the current subsequence
+        if (index == arr.length) {
+            System.out.println(currentSubsequence);
+            return;
+        }
+
+        // Option 1: Include the current element in the subsequence
+        currentSubsequence.add(arr[index]);
+        generateSubsequences(arr, index + 1, currentSubsequence);
+
+        // Option 2: Exclude the current element from the subsequence (backtrack)
+        currentSubsequence.remove(currentSubsequence.size() - 1);
+        generateSubsequences(arr, index + 1, currentSubsequence);
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3};  // Example array
+        ArrayList<Integer> currentSubsequence = new ArrayList<>();  // Temporary list to store current subsequence
+        generateSubsequences(arr, 0, currentSubsequence);  // Start recursion from index 0
+    }
+}
